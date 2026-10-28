@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#176b4d">
+  <title>دوائي | رفيق العناية</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#" onclick="showScreen('welcome');return false;">
+      <span class="brand-mark">✚</span><span>دوائي</span>
+    </a>
+    <span class="top-caption"><span class="status-dot"></span> رفيق العناية اليومية</span>
+  </header>
+
+  <main class="app-shell">
+    <nav class="progress" aria-label="التنقل بين الصفحات">
+      <button class="step active" id="step1" onclick="showScreen('welcome')"><span>01</span> البداية</button>
+      <button class="step" id="step2" onclick="showScreen('settings')"><span>02</span> التواصل</button>
+      <button class="step" id="step3" onclick="showScreen('medicines')"><span>03</span> أدويتي</button>
+    </nav>
+
+    <section class="screen active" id="welcome">
+      <div class="welcome-layout">
+        <div class="welcome-copy">
+          <div class="pill-label"><span>✦</span> رعاية أسهل كل يوم</div>
+          <h1>لأن صحتك<br>تستحق <em>اهتمامًا.</em></h1>
+          <p class="intro">دوائي يساعدك على تنظيم مواعيد الأدوية وتسجيل الجرعات اليومية، بخطوات واضحة وبسيطة.</p>
+          <div class="feature-row">
+            <div class="feature-icon">◷</div><div><b>مواعيد أوضح</b><small>نظّم أوقات أدويتك في مكان واحد</small></div>
+          </div>
+          <div class="feature-row">
+            <div class="feature-icon">♡</div><div><b>اطمئنان أكبر</b><small>سجّل الجرعات وتابع ما تم أخذه</small></div>
+          </div>
+        </div>
+        <div class="welcome-card">
+          <div class="orbit"><div class="big-cross">✚</div><span class="orbit-dot dot-a">✓</span><span class="orbit-dot dot-b">♡</span></div>
+          <p class="card-kicker">ابدأ رحلتك</p>
+          <h2>أهلًا بك في دوائي</h2>
+          <p class="muted">لا تحتاج إلى إنشاء حساب. يمكنك الانتقال مباشرة بين صفحات النموذج.</p>
+          <button class="primary full" onclick="showScreen('settings')">ابدأ الآن <span>←</span></button>
+          <button class="ghost full" onclick="showScreen('medicines')">تصفح الأدوية مباشرة</button>
+        </div>
+      </div>
+      <div class="welcome-foot"><span>✦</span> واجهة بسيطة صُممت لتكون مريحة وواضحة لكبار السن.</div>
+    </section>
+
+    <section class="screen" id="settings">
+      <div class="section-heading">
+        <div><p class="eyebrow">الخطوة الثانية · اختياري</p><h1>بيانات التواصل</h1><p class="intro">يمكنك حفظ البيانات الآن أو تركها فارغة والانتقال إلى الأدوية.</p></div>
+        <div class="heading-icon">⌁</div>
+      </div>
+      <form id="settingsForm" class="card">
+        <div class="field-grid">
+          <div class="field"><label for="savedPatientName">اسم المستفيد</label><input id="savedPatientName" placeholder="الاسم (اختياري)"></div>
+          <div class="field"><label for="beneficiaryPhone">رقم المستفيد</label><input id="beneficiaryPhone" type="tel" inputmode="tel" placeholder="05xxxxxxxx"></div>
+          <div class="field"><label for="emergencyPhone">رقم الطوارئ / المرافق</label><input id="emergencyPhone" type="tel" inputmode="tel" placeholder="رقم جهة الاتصال"></div>
+          <div class="field"><label for="reportEmail">بريد التقرير اليومي</label><input id="reportEmail" type="email" placeholder="name@example.com"></div>
+        </div>
+        <div class="notice"><span class="notice-icon">i</span><p><b>معلومة مهمة</b><br>هذه البيانات اختيارية في النموذج التجريبي. لن تُرسل تلقائيًا إلى أي جهة.</p></div>
+        <div class="button-row">
+          <button class="secondary" type="button" onclick="showScreen('welcome')">رجوع</button>
+          <button class="primary" type="submit">حفظ ومتابعة <span>←</span></button>
+          <button class="ghost" type="button" onclick="showScreen('medicines')">تخطي</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="screen" id="medicines">
+      <div class="section-heading">
+        <div><p class="eyebrow">مساحتك اليومية</p><h1>جدول أدويتي</h1><p class="intro" id="greeting">أضف دواءك وحدد وقت التذكير المناسب.</p></div>
+        <div class="heading-icon">✚</div>
+      </div>
+      <div class="dashboard-strip">
+        <div><span class="strip-label">الأدوية المضافة</span><strong id="medicineCount">0</strong></div>
+        <div class="strip-divider"></div>
+        <div><span class="strip-label">جرعات مسجلة اليوم</span><strong id="takenCount">0</strong></div>
+        <div class="strip-symbol">♡</div>
+      </div>
+      <form id="medicineForm" class="card">
+        <div class="form-title"><div><span class="mini-label">إضافة جديدة</span><h2>دواء إلى جدولك</h2></div><span class="plus-icon">＋</span></div>
+        <div class="field-grid">
+          <div class="field"><label for="medicineName">اسم الدواء</label><input id="medicineName" placeholder="اكتب اسم الدواء" required></div>
+          <div class="field"><label for="medicineDose">الجرعة / التعليمات</label><input id="medicineDose" placeholder="حسب وصف الطبيب" required></div>
+          <div class="field"><label for="medicineTime">وقت التذكير</label><input id="medicineTime" type="time" required></div>
+        </div>
+        <button class="primary full" type="submit">＋ إضافة الدواء</button>
+      </form>
+      <div class="list-heading"><h2>مواعيد اليوم</h2><span class="today-chip" id="todayLabel"></span></div>
+      <div id="medicineList" class="medicine-list"><div class="empty-state"><div class="empty-icon">◷</div><b>جدولك يبدأ من هنا</b><p>أضف أول دواء ليظهر في هذه القائمة.</p></div></div>
+      <div class="bottom-grid">
+        <div class="card action-card"><div class="action-icon">✉</div><h3>التقرير اليومي</h3><p class="muted">جهّز ملخص الأدوية وحالتها في رسالة بريد.</p><button class="secondary full" id="reportButton" type="button">إنشاء التقرير</button></div>
+        <div class="card action-card"><div class="action-icon">☎</div><h3>جهة الاتصال</h3><p class="muted">افتح تطبيق الهاتف للاتصال بالرقم المحفوظ.</p><button class="secondary full" id="callButton" type="button">فتح الاتصال</button></div>
+      </div>
+      <button class="ghost full" type="button" onclick="showScreen('settings')">تعديل بيانات التواصل</button>
+      <div class="notice bottom-notice"><span class="notice-icon">!</span><p>التذكيرات تعمل فقط أثناء بقاء الصفحة مفتوحة. هذا نموذج تجريبي ولا يجري اتصالًا تلقائيًا أو يرسل التقارير في الخلفية؛ لا تعتمد عليه وحده في الحالات الطبية الطارئة.</p></div>
+    </section>
+  </main>
+  <footer><span class="footer-mark">✚</span> دوائي <span class="footer-sep">•</span> عناية يومية بخطوات أبسط <span id="year"></span></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
